@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <org.osmdroid.views.MapView
+        android:id="@+id/mapView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Info card at TOP -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardInfo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginTop="12dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="4dp"
+        app:cardBackgroundColor="@android:color/white"
+        app:strokeWidth="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tvInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="14dp"
+            android:text="No parking spot saved yet"
+            android:textColor="#424242"
+            android:textSize="14sp" />
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Floating Notice Card -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardNotice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:visibility="gone"
+        android:clickable="false"
+        android:focusable="false"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="8dp"
+        app:cardBackgroundColor="@android:color/white"
+        app:strokeWidth="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cardInfo">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:padding="16dp">
+
+            <ImageView
+                android:id="@+id/ivNoticeIcon"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_check_circle"
+                android:contentDescription="Notice Icon" />
+
+            <TextView
+                android:id="@+id/tvNoticeText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:text="Parking spot saved"
+                android:textColor="#212121"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Floating buttons on the right -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btnRecenter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="12dp"
+        android:contentDescription="Recenter"
+        app:srcCompat="@drawable/ic_my_location"
+        app:backgroundTint="@android:color/white"
+        app:tint="#1976D2"
+        app:fabSize="mini"
+        app:layout_constraintBottom_toTopOf="@id/btnFindCar"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btnFindCar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:contentDescription="Find my car"
+        app:srcCompat="@drawable/ic_directions_car_red"
+        app:backgroundTint="@android:color/white"
+        app:tint="#E53935"
+        app:fabSize="mini"
+        app:layout_constraintBottom_toTopOf="@id/tvAttribution"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Attribution text -->
+    <TextView
+        android:id="@+id/tvAttribution"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
+        android:text="© MapTiler © OpenStreetMap contributors"
+        android:textSize="10sp"
+        android:textColor="@android:color/darker_gray"
+        android:background="#80FFFFFF"
+        android:padding="4dp"
+        app:layout_constraintBottom_toTopOf="@id/cardBottom"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Bottom card holding the button -->
+    <LinearLayout
+        android:id="@+id/cardBottom"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_bottom_card"
+        android:elevation="8dp"
+        android:orientation="vertical"
+        android:padding="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnParkedHere"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:text="I&apos;m parked here"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:backgroundTint="#1976D2"
+            app:cornerRadius="16dp"
+            app:icon="@drawable/ic_local_parking"
+            app:iconGravity="start"
+            app:iconTint="@android:color/white" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
